@@ -1,3 +1,11 @@
+# QUICKSORT ALGORITHM
+# ===================
+# This script was made for learning purposes based on some online research.
+# It uses a single list where elements are recursively swaped according to 
+# their value to the left(lower) or right(higher) when compared to a pivot
+# value.
+
+
 def quicksort(array, left, right):
 
 	if left >= right:
@@ -28,7 +36,9 @@ def partition(array, left, right, pivot):
 
 	return left
 
-array = [9, 2, 6, 4, 3, 5, 1]
 
+# Test case
+
+array = [9, 2, 6, 4, 3, 5, 1]
 print (array)
 print (quicksort(array, 0, len(array) - 1))
