@@ -164,7 +164,7 @@ def get_connections(network, user):
 #   A list of all games the user likes.
 #   - If the user likes no games, return an empty list.
 #   - If the user is not in network, return None.
-def get_games_liked(network,user):
+def get_games_liked(network, user):
     if user in network:
         return network[user]['games liked']
     return None
@@ -376,6 +376,9 @@ def recommend_connections(network, user):
             rankings[secondary_connection] = aggregate_score
         return quicksort_users(rankings, secondary_connections)
     return None
+
+
+# Test cases
 
 net = create_data_structure(example_input)
 print (net)
