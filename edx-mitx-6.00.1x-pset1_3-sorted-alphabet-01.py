@@ -4,7 +4,6 @@ def sort_alphabet(s):
     j = 0
     sort = ''
     cur_sort = ''
-    
     while i < len(s):
         while j < len(alphabet):
             if s[i] == alphabet[j]:
@@ -21,4 +20,5 @@ def sort_alphabet(s):
     return sort
 
 # Test case
-print(sort_alphabet('azcbobobegghakl'))
+string = 'azcbobobegghakl'
+print(sort_alphabet(string))

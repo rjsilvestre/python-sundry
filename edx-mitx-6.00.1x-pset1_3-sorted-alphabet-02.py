@@ -11,4 +11,5 @@ def sort_alphabet(s):
     return sort
 
 # Test case
-print(sort_alphabet('azcbobobegghakl'))
+string = 'azcbobobegghakl'
+print(sort_alphabet(string))
