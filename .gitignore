@@ -1,6 +1,5 @@
 # Vim files
-*.~
-*.un~
+*~
 *.swp
 
 # Byte-compiled / optimized / DLL files
