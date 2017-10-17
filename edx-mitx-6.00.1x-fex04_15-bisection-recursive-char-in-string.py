@@ -1,6 +1,6 @@
 def isIn(char, aStr):
     '''
-    char: a singe character
+    char: a single character
     aStr: an alphabetized string
 
     return: True if char is in aStr; False otherwise
@@ -21,7 +21,6 @@ def isIn(char, aStr):
             return isIn(char, aStr[:mid_i])
                 
 # Test case
-
 aStr = 'abcdefhijklmnopqrstuvwxyz'
 char = 'g'
 print(isIn(char, aStr))
