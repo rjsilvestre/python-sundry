@@ -1,4 +1,22 @@
+# A program that prints the longest substring of s in which the letters occur 
+# in alphabetical order. 
+# This version goes through a string containing the alphabet for each element
+# of the string to be searched and appends the current element to another list
+# if it is found on a subsequent position on the alphabet. Compares if the  
+# resulting list is the longest and returns it.
+
+
 def sort_alphabet(s):
+    '''
+    Finds the longest alphebetized sub string on a string.
+
+    Arg:
+        s: the string to be searched.
+
+    Returns:
+        The longest alphebetized string or an empty string
+        if none is found.
+    '''
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     i = 0
     j = 0

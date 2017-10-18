@@ -1,3 +1,10 @@
+# A program that prints the longest substring of s in which the letters occur 
+# in alphabetical order. 
+# This version goes through all elements and directly compares the current 
+# character with the next. If the next is higher, appends it to another list.
+# Compares if the resulting list is the longest and returns it.
+
+
 def sort_alphabet(s):
     sort = s[0]
     cur_sort = s[0]
