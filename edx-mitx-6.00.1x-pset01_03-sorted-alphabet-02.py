@@ -6,6 +6,15 @@
 
 
 def sort_alphabet(s):
+    '''
+    Finds the longest alphabetized sub string on a string.
+
+    Arg:
+        s: the string to be searched.
+
+    Returns:
+        The longest alphabetized string.
+    '''
     sort = s[0]
     cur_sort = s[0]
     for i in range(len(s) - 1):

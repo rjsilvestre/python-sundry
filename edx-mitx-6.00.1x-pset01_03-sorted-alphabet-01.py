@@ -8,14 +8,13 @@
 
 def sort_alphabet(s):
     '''
-    Finds the longest alphebetized sub string on a string.
+    Finds the longest alphabetized sub string on a string.
 
     Arg:
         s: the string to be searched.
 
     Returns:
-        The longest alphebetized string or an empty string
-        if none is found.
+        The longest alphabetized string.
     '''
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     i = 0
