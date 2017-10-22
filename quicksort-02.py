@@ -13,7 +13,7 @@ def quicksort(array):
         array: List of values.
     
     Returns:
-        The sorted array
+        The sorted array.
     '''
     if not array or len(array) <= 1:
         return array

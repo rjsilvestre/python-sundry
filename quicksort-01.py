@@ -14,7 +14,7 @@ def quicksort(array, left, right):
         rigth: The right start position for the comparison.
     
     Returns:
-        The sorted array
+        The sorted array.
     '''
     if left >= right:
         return

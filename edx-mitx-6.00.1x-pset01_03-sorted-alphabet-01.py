@@ -11,7 +11,7 @@ def sort_alphabet(s):
     Finds the longest alphabetized sub string on a string.
 
     Arg:
-        s: the string to be searched.
+        s: The string to be searched.
 
     Returns:
         The longest alphabetized string.

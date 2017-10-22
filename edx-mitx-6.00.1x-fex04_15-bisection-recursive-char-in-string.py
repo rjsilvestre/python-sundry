@@ -9,14 +9,14 @@
 
 def isIn(char, aStr):
     '''
-    Checks if a character is in an alpabetized string
+    Checks if a character is in an alpabetized string.
 
     Args:
-        char: a single character
-        aStr: an alphabetized string
+        char: A single character.
+        aStr: An alphabetized string.
 
     Return: 
-        True if char is in aStr; False otherwise
+        True if char is in aStr; False otherwise.
     '''
     mid_i = len(aStr) // 2
     if aStr == '':
