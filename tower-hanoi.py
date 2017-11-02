@@ -5,6 +5,9 @@
 
 def hanoi(n, init, temp, final):
     '''
+    Prints the next movement to be executed 
+    or calls itself recursively if needed.
+
     Args:
         n: int. Number of pieces.
         init: Initial pole name.
@@ -13,9 +16,6 @@ def hanoi(n, init, temp, final):
 
     Returns:
         None.
-
-    Prints the next movement to be executed 
-    or calls recursively if needed.
     '''
     if n == 1:
         print('Move from:',init, 'to', final)
@@ -24,5 +24,6 @@ def hanoi(n, init, temp, final):
         hanoi(1, init, temp, final)
         hanoi(n - 1, temp, init, final)
 
+# Test case
 blocks = int(input('Number of blocks: '))
 hanoi(blocks, 'Pole 1', 'Pole 2', 'Pole 3')
