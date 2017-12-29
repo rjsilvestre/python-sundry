@@ -1,6 +1,6 @@
 # Implementation of an iterable object. Based on programiz.com example.
 # Creates two instances of the objects PowerTwo with argument n, that when
-# iterated prints the first n+1 power of two numbers.
+# iterated prints the first n power of two numbers.
 
 class PowerTwo:
     """Iterates to the first n power of two numbers."""
