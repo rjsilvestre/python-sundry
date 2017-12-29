@@ -1,29 +1,28 @@
 # Implementation of an iterable object. Based on programiz.com example.
-# Creates two instances of the objects PowerTwo with argument n, that when
-# iterated prints the first n power of two numbers.
+# Creates three instances of the objects PowerTwo with argument max_n, that when
+# iterated prints the first max_n power of two numbers.
 
 class PowerTwo:
-    """Iterates to the first n power of two numbers."""
-    def __init__(self, n):
-        self.n = n
+    """Iterates through the first max_n power of two numbers."""
+    def __init__(self, max_n):
+        self.max_n = max_n
 
     def __iter__(self):
-        self.next = 0
+        self.next_n = 0
         return self
 
     def __next__(self):
-        if self.next < self.n:
-            result = 2 ** self.next
-            self.next += 1
+        if self.next_n < self.max_n:
+            result = 2 ** self.next_n
+            self.next_n += 1
             return result
         else:
             raise StopIteration
 
-# Test case
+# Test cases
 a = PowerTwo(4)
 b = PowerTwo(10)
 
-print()
 for num in a:
     print(num)
 
