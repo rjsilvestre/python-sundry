@@ -4,7 +4,7 @@
 x = -27
 epsilon = 0.01
 num_guesses = 0
-low = min(x, 0.0)
+low = min(x, -1.0)
 high = max(1.0, x)
 ans = (high + low) / 2.0
 while abs(ans**3 - x) >= epsilon:
