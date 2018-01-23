@@ -11,4 +11,6 @@ def sum_digits(s):
             pass
     return result
 
+# Test cases
 print(sum_digits('a2b3c'))
+print(sum_digits('b91c5'))
