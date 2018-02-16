@@ -6,23 +6,23 @@
 
 import random
 
-# Classes and function provided by the course.
+# Classes and functions provided by the course.
 class Item(object):
     def __init__(self, n, v, w):
         self.name = n
         self.value = float(v)
         self.weight = float(w)
-    def getName(self):
+    def get_name(self):
         return self.name
-    def getValue(self):
+    def get_value(self):
         return self.value
-    def getWeight(self):
+    def get_weight(self):
         return self.weight
     def __str__(self):
         return '<' + self.name + ', ' + str(self.value) + ', '\
                      + str(self.weight) + '>'
 
-def buildItems():
+def build_items():
     return [Item(n,v,w) for n,v,w in (('clock', 175, 10),
                                       ('painting', 90, 9),
                                       ('radio', 20, 4),
@@ -30,16 +30,16 @@ def buildItems():
                                       ('book', 10, 1),
                                       ('computer', 200, 20))]
 
-def buildRandomItems(n):
+def build_random_items(n):
     return [Item(str(i),10*random.randint(1,10),random.randint(1,10))
             for i in range(n)]
-# End of classes provided by the course.
+# End of classes and functions provided by the course.
 
-def yieldAllCombos(items):
-    ''' Generates all combinations of N items into two bags, whereby each 
+def yield_all_combos(items):
+    ''' Generates all combinations of N items into two bags, whereby each
     item is in one or zero bags.
 
-    Yields a tuple, (bag1, bag2), where each bag is represented as a list 
+    Yields a tuple, (bag1, bag2), where each bag is represented as a list
     of which item(s) are in each bag.
     '''
     N = len(items)
@@ -56,10 +56,10 @@ def yieldAllCombos(items):
         yield combo1, combo2
 
 # Test Case
-items = buildRandomItems(3)
+items = build_random_items(3)
 for item in items:
     print(item)
-for combo1, combo2 in yieldAllCombos(items):
+for combo1, combo2 in yield_all_combos(items):
     print('Combo1:')
     for item in combo1:
         print(item)
