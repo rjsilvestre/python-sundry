@@ -94,7 +94,7 @@ class RectangularRoom(object):
 
         pos: a Position
         """
-        self.cleaned.add(int((pos.x), int(pos.y)))
+        self.cleaned.add((int(pos.x), int(pos.y)))
 
     def isTileCleaned(self, m, n):
         """
@@ -166,7 +166,11 @@ class Robot(object):
         room:  a RectangularRoom object.
         speed: a float (speed > 0)
         """
-        raise NotImplementedError
+        self.room = room
+        self.speed = speed
+        self.position = room.getRandomPosition()
+        self.direction = random.randint(0, 360)
+        self.room.cleanTileAtPosition(self.position)
 
     def getRobotPosition(self):
         """
@@ -174,7 +178,7 @@ class Robot(object):
 
         returns: a Position object giving the robot's position.
         """
-        raise NotImplementedError
+        return self.position
 
     def getRobotDirection(self):
         """
@@ -183,7 +187,7 @@ class Robot(object):
         returns: an integer d giving the direction of the robot as an angle in
         degrees, 0 <= d < 360.
         """
-        raise NotImplementedError
+        return self.direction
 
     def setRobotPosition(self, position):
         """
@@ -191,7 +195,9 @@ class Robot(object):
 
         position: a Position object.
         """
-        raise NotImplementedError
+        if not self.room.isPositionInRoom(position):
+            raise ValueError("Invalid position")
+        self.position = position
 
     def setRobotDirection(self, direction):
         """
@@ -199,7 +205,9 @@ class Robot(object):
 
         direction: integer representing an angle in degrees
         """
-        raise NotImplementedError
+        if not( 0 <= direction <= 360):
+            raise ValueError("Invalid direction.")
+        self.direction = direction
 
     def updatePositionAndClean(self):
         """
