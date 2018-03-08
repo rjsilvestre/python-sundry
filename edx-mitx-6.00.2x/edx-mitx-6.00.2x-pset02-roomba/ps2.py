@@ -266,10 +266,27 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
     robot_type: class of robot to be instantiated (e.g. StandardRobot or
                 RandomWalkRobot)
     """
-    raise NotImplementedError
+    sim_ticks = []
+    for t in range(num_trials):
+        #anim = ps2_visualize.RobotVisualization(num_robots, width, height)
+        room = RectangularRoom(width, height)
+        robots = [robot_type(room, speed) for n in range(num_robots)]
+        per_covered = 0.0
+        ticks = 1
+        while per_covered < min_coverage:
+            #anim.update(room, robots)
+            for robot in robots:
+                robot.updatePositionAndClean()
+            ticks += 1
+            per_covered = room.getNumCleanedTiles() / room.getNumTiles()
+        sim_ticks.append(ticks)
+        #anim.update(room, robots)
+        #anim.done()
+    return sum(sim_ticks) / len(sim_ticks)
 
 # Uncomment this line to see how much your simulation takes on average
-##print(runSimulation(1, 1.0, 10, 10, 0.75, 30, StandardRobot))
+#print(runSimulation(1, 1.0, 10, 10, 0.75, 30, StandardRobot))
+#print(runSimulation(2, 1.0, 10, 10, 0.75, 5, StandardRobot))
 
 
 # === Problem 5
