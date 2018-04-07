@@ -169,9 +169,22 @@ def simulationWithoutDrug(numViruses, maxPop, maxBirthProb, clearProb,
     clearProb: Maximum clearance probability (a float between 0-1)
     numTrials: number of simulation runs to execute (an integer)
     """
+    allTimeSteps = [[] for i in range(300)]
+    for trial in range(numTrials):
+        patient = Patient([SimpleVirus(maxBirthProb, clearProb) for i in
+            range(numViruses)], maxPop)
+        for timeStep in allTimeSteps:
+            timeStep.append(patient.update())
+    averageTimeSteps = [sum(timeStep) / numTrials for timeStep in allTimeSteps]
+    pylab.plot(averageTimeSteps, label = 'Simple virus')
+    pylab.title("SimpleVirus simulation")
+    pylab.xlabel("Time Steps")
+    pylab.ylabel("Average Virus Population")
+    pylab.legend(loc = "best")
+    pylab.show()
 
-    # TODO
-
+# Test case
+#simulationWithoutDrug(100, 1000, 0.1, 0.05, 100)
 
 
 #
