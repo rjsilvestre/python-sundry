@@ -212,21 +212,21 @@ class ResistantVirus(SimpleVirus):
         mutProb: Mutation probability for this virus particle (a float). This is
         the probability of the offspring acquiring or losing resistance to a drug.
         """
-
-        # TODO
-
+        SimpleVirus.__init__(self, maxBirthProb, clearProb)
+        self.resistances = resistances
+        self.mutProb = mutProb
 
     def getResistances(self):
         """
         Returns the resistances for this virus.
         """
-        # TODO
+        return self.resistances
 
     def getMutProb(self):
         """
         Returns the mutation probability for this virus.
         """
-        # TODO
+        return self.mutProb
 
     def isResistantTo(self, drug):
         """
@@ -239,9 +239,7 @@ class ResistantVirus(SimpleVirus):
         returns: True if this virus instance is resistant to the drug, False
         otherwise.
         """
-
-        # TODO
-
+        return self.resistances.get(drug, False)
 
     def reproduce(self, popDensity, activeDrugs):
         """
@@ -287,9 +285,24 @@ class ResistantVirus(SimpleVirus):
         maxBirthProb and clearProb values as this virus. Raises a
         NoChildException if this virus particle does not reproduce.
         """
-
-        # TODO
-
+        isResistant = True
+        for drug in activeDrugs:
+            if not self.isResistantTo(drug):
+                isResistant = False
+                break
+        if isResistant and random.random() <= self.maxBirthProb * (1 - popDensity):
+            newResistances = {}
+            for resistance in self.resistances:
+                if self.resistances[resistance]:
+                    newResistances[resistance] = (True
+                            if random.random() <= 1-self.mutProb else False)
+                else:
+                    newResistances[resistance] = (True
+                            if random.random() <= self.mutProb else False)
+            return ResistantVirus(self.maxBirthProb, self.clearProb,
+                    newResistances, self.mutProb)
+        else:
+            raise NoChildException
 
 
 class TreatedPatient(Patient):
