@@ -437,8 +437,8 @@ def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
             resistTimeSteps[i].append(patient.getResistPop(['guttagonol']))
     avPopTimeSteps = [sum(timeStep) / numTrials for timeStep in popTimeSteps]
     avResistTimeSteps = [sum(timeStep) / numTrials for timeStep in resistTimeSteps]
-    pylab.plot(avPopTimeSteps, label = 'Resistant virus, without prescrition')
-    pylab.plot(avResistTimeSteps, label = 'Resistant virus, with prescription')
+    pylab.plot(avPopTimeSteps, label = 'Total virus population')
+    pylab.plot(avResistTimeSteps, label = 'Resistant virus population')
     pylab.title("ResistantVirus simulation")
     pylab.xlabel("time step")
     pylab.ylabel("# viruses")
@@ -446,7 +446,7 @@ def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
     pylab.show()
 
 
-# Test case
+# Test cases
 
 # simulationWithDrug(100, 1000, 0.1, 0.05, {'guttagonol': False}, 0.005, 100)
 # simulationWithDrug(1, 10, 1.0, 0.0, {}, 1.0, 5)
