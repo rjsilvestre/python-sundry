@@ -419,9 +419,36 @@ def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
     resistances: a dictionary of drugs that each ResistantVirus is resistant to
                  (e.g., {'guttagonol': False})
     mutProb: mutation probability for each ResistantVirus particle
-             (a float between 0-1). 
+             (a float between 0-1).
     numTrials: number of simulation runs to execute (an integer)
 
     """
+    popTimeSteps = [[] for i in range(300)]
+    resistTimeSteps = [[] for i in range(300)]
+    for trial in range(numTrials):
+        patient = TreatedPatient([ResistantVirus(maxBirthProb, clearProb,
+            resistances, mutProb) for i in range(numViruses)], maxPop)
+        for i in range(150):
+            popTimeSteps[i].append(patient.update())
+            resistTimeSteps[i].append(patient.getResistPop(['guttagonol']))
+        patient.addPrescription('guttagonol')
+        for i in range(150, 300):
+            popTimeSteps[i].append(patient.update())
+            resistTimeSteps[i].append(patient.getResistPop(['guttagonol']))
+    avPopTimeSteps = [sum(timeStep) / numTrials for timeStep in popTimeSteps]
+    avResistTimeSteps = [sum(timeStep) / numTrials for timeStep in resistTimeSteps]
+    pylab.plot(avPopTimeSteps, label = 'Resistant virus, without prescrition')
+    pylab.plot(avResistTimeSteps, label = 'Resistant virus, with prescription')
+    pylab.title("ResistantVirus simulation")
+    pylab.xlabel("time step")
+    pylab.ylabel("# viruses")
+    pylab.legend(loc = "best")
+    pylab.show()
 
-    # TODO
+
+# Test case
+
+# simulationWithDrug(100, 1000, 0.1, 0.05, {'guttagonol': False}, 0.005, 100)
+# simulationWithDrug(1, 10, 1.0, 0.0, {}, 1.0, 5)
+# simulationWithDrug(1, 20, 1.0, 0.0, {"guttagonol": True}, 1.0, 5)
+# simulationWithDrug(75, 100, .8, 0.1, {"guttagonol": True}, 0.8, 1)
