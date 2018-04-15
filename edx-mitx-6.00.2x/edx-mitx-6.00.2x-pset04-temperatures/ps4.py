@@ -173,8 +173,17 @@ def evaluate_models_on_training(x, y, models):
     Returns:
         None
     """
-    # TODO
-    pass
+    for i in range(len(models)):
+        ext_y = np.polyval(models[i], x)
+        r_sqr = r_squared(y, ext_y)
+        pylab.figure()
+        pylab.plot(x, y, 'bo', label='Measured temperatures')
+        pylab.plot(x, ext_y, 'r-', label='Fit degree ' + str(i+1))
+        pylab.xlabel('Years')
+        pylab.ylabel('Temperatures')
+        pylab.title('Model: ' + str(models[i]) + '\nR^2=' + str(r_sqr))
+        pylab.legend()
+    pylab.show()
 
 
 ### Begining of program
