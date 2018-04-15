@@ -66,7 +66,7 @@ class Climate(object):
             if month not in self.rawdata[city][year]:
                 self.rawdata[city][year][month] = {}
             self.rawdata[city][year][month][day] = temperature
-            
+
         f.close()
 
     def get_yearly_temp(self, city, year):
@@ -130,8 +130,11 @@ def generate_models(x, y, degs):
         a list of numpy arrays, where each array is a 1-d array of coefficients
         that minimizes the squared error of the fitting polynomial
     """
-    # TODO
-    pass
+    models = []
+    for deg in degs:
+        model = np.polyfit(x, y, deg)
+        models.append(np.array(model))
+    return models
 
 # Problem 2
 def r_squared(y, estimated):
